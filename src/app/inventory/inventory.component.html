@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty To Buy</th>
+                <th scope="col">Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of inventory">
+                <td><img [src]="i.image" alt=""></td>
+                <td><p>{{i.name}}</p></td>
+                <td>{{i.price | currency}}</td>
+                <td>
+                    <button 
+                    type="button"
+                    (click)="decreaseQty(i)"
+                    class="btn btn-danger">
+                    -
+                    </button>
+
+                    <!-- input field -->
+                    <input 
+                    type="number"
+                    [(ngModel)] = "i.qty"
+                      />
+
+
+                      <button 
+                      type="button"
+                      (click)="increaseQty(i)"
+                      class="btn btn-success">
+                      +
+                      </button>
+
+                </td>
+              </tr>
+       
+            </tbody>
+          </table>
+
+          <br>
+          <div class="row">
+            <div class="card-body">
+              <h5 class="card-title">Carty QTY</h5>
+              {{qtyCount()}}
+            </div>
+          </div>
+    </div>
+</div>
